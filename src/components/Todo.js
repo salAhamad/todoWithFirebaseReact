@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTodoData } from '../contexts/TodoContext';
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
@@ -6,7 +6,7 @@ import TodoList from './TodoList'
 function Todo({ userDetail }) {
 
   const { todoItem } = useTodoData();
-
+  
   return (
     <div className='todo-container text-center'>
         <div className="todo-sub-container">
@@ -21,7 +21,7 @@ function Todo({ userDetail }) {
             <div className="todo-list-container position-relative py-3 gap-3 d-flex flex-column">
               {
                 todoItem.map((item, index) => {
-                  return <TodoList key={index} />
+                  return <TodoList data={item} key={index} />
                 })
               }              
             </div>

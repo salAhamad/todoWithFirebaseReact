@@ -10,19 +10,9 @@ import {
 import { doc, setDoc, collection } from "firebase/firestore";
 import { auth, db } from "../firebase_config"
 
-const userAuthContext = createContext();
+import { currentDateAndTime } from "../common"
 
-// Current Date
-const currentDateAndTime = () => {
-    const time = new Date().toLocaleString("en-us", {
-      hour: "2-digit", minute: "2-digit" 
-    }).split(' ').join('').toLocaleLowerCase();
-    const date = new Date();
-    const dd = String(date.getDate()).padStart(2, '0');
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const yyyy = date.getFullYear();
-    return `${dd}/${mm}/${yyyy}, ${time}`
-}
+const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
     const [user, setUser] = useState({});
@@ -35,8 +25,7 @@ export function UserAuthContextProvider({ children }) {
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        console.log(error);
       });;
     }
     async function signUp(email, password, firstName, lastName) {

@@ -4,6 +4,7 @@ import Todo from '../components/Todo'
 import { TodoContextProvider } from '../contexts/TodoContext';
 import { useUserAuth } from '../contexts/UserAuthContext';
 
+
 export default function Home() {
 
   const { user } = useUserAuth();
@@ -12,7 +13,7 @@ export default function Home() {
     <>
       <Header userLogedIn={user} />
       <TodoContextProvider>
-        <Todo userDetail={user} />
+          <Todo userDetail={user} />
       </TodoContextProvider>
     </>
   )
